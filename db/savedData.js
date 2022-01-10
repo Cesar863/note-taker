@@ -6,7 +6,7 @@ const util = require('util');
 const writeNote = util.promisify(fs.writeFile);
 const readNote = util.promisify(fs.readFile);
 
-class NoteFunctions {
+class Save {
     write(note) {
         return writeNote('db/db.json', JSON.stringify(note));
     }
@@ -44,9 +44,9 @@ class NoteFunctions {
     //Delete notes
     deleteNote(id) {
         return this.retrivedNotes()
-        then(notes => notes.filer(note => note.id !== id))
+        .then(notes => notes.filer(note => note.id !== id))
         .then(filteredNotes => this.write(filteredNotes));
     }
 };
 
-module.exports = new NoteFunctions();
+module.exports = new Save();

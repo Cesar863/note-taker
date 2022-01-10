@@ -1,8 +1,137 @@
-let noteTitle;
-let noteText;
-let saveNoteBtn;
-let newNoteBtn;
-let noteList;
+let noteTitle = $(".note-title");
+let noteText = $(".note-textarea");
+let saveNoteBtn = $(".save-note");
+let newNoteBtn = $(".new-note");
+let noteList = $(".list-container .list-group");
+
+// // note that is currently being created
+// let currentNote = {}
+
+// // GET all notes from database
+// var getNotes = function() {
+//   return $.ajax({
+//     url:"/api/notes",
+//     method: "GET"
+//   });
+// };
+
+// // POST/SAVE note to database
+// var saveNote = function(note) {
+//   return $.ajax({
+//     url:"/api/notes",
+//     data: note,
+//     method: "POST"
+//   });
+// };
+
+// // DELETE note from database
+// var deleteNote = function(id) {
+//   return $.ajax({
+//     url: "api/notes/" + id,
+//     method: "DELETE"
+//   });
+// };
+
+// // display active note
+// var showCurrentNote = function() {
+//   saveNoteBtn.hide();
+
+//   if(currentNote.id) {
+//     noteTitle.attr('readonly', true);
+//     noteText.attr('readonly', true);
+//     noteTitle.val(activeNote.title);
+//     noteText.val(activeNote.text);
+//   } else {
+//     noteTitle.attr('readonly', false);
+//     noteText.attr('readonly', false);
+//     noteTitle.val('');
+//     noteText.val('');
+//   }
+// };
+
+// // GET, SAVE, and DISPLAY notes
+// var noteSaves = function() {
+//   var newNote = {
+//     title: noteTitle.val(),
+//     text: noteText.val()
+//   };
+
+//   saveNote(newNote).then(function(data) {
+//     GetShowNotes();
+//     showCurrentNote();
+//   });
+// };
+
+// // Delete notes
+// var deleteNoteHandler = function(event) {
+//   // prevent default
+//   event.stopPropagation();
+
+//   var note = $(this)
+//   .parent(".list-group-item")
+//   .data();
+
+//   if(currentNote.id === note.id) {
+//     currentNote = {};
+//   }
+
+//   deleteNote(note.id).then(function() {
+//     GetShowNotes();
+//     showCurrentNote();
+//   });
+// };
+
+// // display current notes notes
+// var noteShowHandler = function() {
+//   currentNote = $(this).data();
+//   showCurrentNote();
+// };
+
+// // sets and shows the new note
+// var setShowNewNote = function() {
+//   currentNote = {};
+//   showCurrentNote();
+// };
+
+// // contingency for empty header or note text hide the save button
+// var showSaveBtn = function() {
+//   if(noteTitle.val().trim() || noteText.val().trim()){
+//     saveNoteBtn.hide();
+//   } else {
+//     saveNoteBtn.show();
+//   }
+// };
+
+// // show list of note titles
+// var showNoteTitles = function(notes) {
+//   noteList.empty();
+
+//   var noteListItems = [];
+
+//   for (var i = 0; i < notes.length; i++) {
+//     var note = notes[i];
+
+//     var listItem = $("<li class='list-group-item'>").data(note);
+
+//     var span = $("<span>").text(note.title);
+
+//     var deleteBtn = $("<i class='fa fa-trash-alt float-right text-danger delete-note'>");
+
+//     listItem.append(span, deleteBtn);
+//     noteListItems.push(listItem);
+//   };
+
+//   noteList.append(noteListItems);
+// };
+
+// // GET note from db and show them on list div
+// var getandShowNotes = function() {
+//   return getNotes().then(function(data) {
+//     showNoteTitles(data);
+//   });
+// };
+
+
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
