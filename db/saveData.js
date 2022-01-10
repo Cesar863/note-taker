@@ -15,7 +15,7 @@ class Save {
         return readNote('db/db.json','utf8');
     }
 
-    retrivedNotes() {
+    retrieveNotes() {
         return this.read().then(notes => {
             let notesArray;
             try {
@@ -32,19 +32,19 @@ class Save {
         if(!title || !text) {
             throw new Error('Please enter a title and a text.');
         }
-        const newNote = { title, text, id: uuidv4()};
+        const newNote = { title, text, id: uuidv4() };
 
-        // retrive add and update notes
-        return this.retrivedNotes()
+        // retrieve add and update notes
+        return this.retrieveNotes()
         .then(notes => [...notes, newNote])
-        .then(updatedNotes => this.write(updatesNotes))
+        .then(updatedNotes => this.write(updatedNotes))
         .then(() => newNote);
     }
 
     //Delete notes
     deleteNote(id) {
-        return this.retrivedNotes()
-        .then(notes => notes.filer(note => note.id !== id))
+        return this.retrieveNotes()
+        .then(notes => notes.filter(note => note.id !== id))
         .then(filteredNotes => this.write(filteredNotes));
     }
 };
